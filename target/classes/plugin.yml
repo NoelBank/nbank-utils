@@ -1,0 +1,18 @@
+name: Utils
+version: 1.0-SNAPSHOT
+main: codes.nbank.plugins.utils.Utils
+api-version: 1.15
+prefix: nbank
+load: STARTUP
+author: Noel Bank
+description: nbank utils plugin
+website: https://nbank.tech
+commands:
+  gamemode:
+    description: Sets Gamemode
+    aliases: [gm]
+    usage: /gamemode
+  clearchat:
+    description: clears chat
+    aliases: [cc]
+    usage: /clearchat
