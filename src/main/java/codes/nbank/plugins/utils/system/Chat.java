@@ -48,6 +48,10 @@ public class Chat {
     }
 
     public String getPlayerChatColor(Player player) {
+        if (player.isOp()) {
+            return "§4" + player.getDisplayName()+ "§7";
+        }
+
         return "§7"+player.getDisplayName();
     }
 }

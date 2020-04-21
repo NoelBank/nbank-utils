@@ -8,6 +8,6 @@ import org.bukkit.event.player.PlayerQuitEvent;
 public class QuitListener implements Listener {
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
-        event.setQuitMessage(new Chat().getServerPrefix() + event.getPlayer().getDisplayName() + " hat das Spiel verlassen.");
+        event.setQuitMessage(new Chat().getServerPrefix() + " " + event.getPlayer().getDisplayName() + " hat das Spiel verlassen.");
     }
 }

@@ -2,10 +2,12 @@ package codes.nbank.plugins.utils;
 
 import codes.nbank.plugins.utils.commands.ClearChat;
 import codes.nbank.plugins.utils.commands.Gamemode;
+import codes.nbank.plugins.utils.listener.BanListener;
 import codes.nbank.plugins.utils.listener.ChatListener;
 import codes.nbank.plugins.utils.listener.JoinListener;
 import codes.nbank.plugins.utils.listener.QuitListener;
 import codes.nbank.plugins.utils.tabcompleter.GamemodeCompleter;
+
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Utils extends JavaPlugin {
@@ -20,6 +22,7 @@ public final class Utils extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new JoinListener(), this);
         getServer().getPluginManager().registerEvents(new QuitListener(), this);
         getServer().getPluginManager().registerEvents(new ChatListener(), this);
+        getServer().getPluginManager().registerEvents(new BanListener(), this);
 
 
         /**
@@ -35,8 +38,6 @@ public final class Utils extends JavaPlugin {
          */
         getCommand("gamemode").setExecutor(new Gamemode());
         getCommand("clearchat").setExecutor(new ClearChat());
-
-
     }
 
     @Override
@@ -44,6 +45,5 @@ public final class Utils extends JavaPlugin {
         System.out.println("nbank plugin disabled");
 
     }
-
 
 }

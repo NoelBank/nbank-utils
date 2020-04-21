@@ -21,6 +21,7 @@ public class GamemodeCompleter implements TabCompleter {
 
 
         if (args.length == 1) {
+            commands.add("0");
             commands.add("1");
             commands.add("2");
             commands.add("3");
