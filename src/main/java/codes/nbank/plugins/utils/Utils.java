@@ -1,6 +1,7 @@
 package codes.nbank.plugins.utils;
 
 import codes.nbank.plugins.utils.commands.ClearChat;
+import codes.nbank.plugins.utils.commands.Fly;
 import codes.nbank.plugins.utils.commands.Gamemode;
 import codes.nbank.plugins.utils.listener.BanListener;
 import codes.nbank.plugins.utils.listener.ChatListener;
@@ -38,6 +39,7 @@ public final class Utils extends JavaPlugin {
          */
         getCommand("gamemode").setExecutor(new Gamemode());
         getCommand("clearchat").setExecutor(new ClearChat());
+        getCommand("fly").setExecutor(new Fly());
     }
 
     @Override
