@@ -7,7 +7,7 @@ import java.util.Optional;
 public class Chat {
 
     public String getServerPrefix() {
-        return "§7[§eSYSTEM§7]";
+        return "§7| §eSYSTEM§7 ";
     }
 
     public String getMessageSeperator() {
