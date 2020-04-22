@@ -1,13 +1,7 @@
 package codes.nbank.plugins.utils;
 
-import codes.nbank.plugins.utils.commands.ClearChat;
-import codes.nbank.plugins.utils.commands.Fly;
-import codes.nbank.plugins.utils.commands.Gamemode;
-import codes.nbank.plugins.utils.listener.BanListener;
-import codes.nbank.plugins.utils.listener.ChatListener;
-import codes.nbank.plugins.utils.listener.JoinListener;
-import codes.nbank.plugins.utils.listener.QuitListener;
-import codes.nbank.plugins.utils.tabcompleter.GamemodeCompleter;
+import codes.nbank.plugins.utils.commands.*;
+import codes.nbank.plugins.utils.listener.*;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -20,10 +14,11 @@ public final class Utils extends JavaPlugin {
         /**
          * This is used for listener
          */
-        getServer().getPluginManager().registerEvents(new JoinListener(), this);
-        getServer().getPluginManager().registerEvents(new QuitListener(), this);
-        getServer().getPluginManager().registerEvents(new ChatListener(), this);
-        getServer().getPluginManager().registerEvents(new BanListener(), this);
+        getServer().getPluginManager().registerEvents(new JoinMessage(), this);
+        getServer().getPluginManager().registerEvents(new QuitMessage(), this);
+        getServer().getPluginManager().registerEvents(new ChatMessage(), this);
+        getServer().getPluginManager().registerEvents(new Ban(), this);
+        getServer().getPluginManager().registerEvents(new DeathMessage(), this);
 
 
         /**
@@ -31,7 +26,8 @@ public final class Utils extends JavaPlugin {
          *
          * set autocomplete
          */
-        getCommand("gamemode").setTabCompleter(new GamemodeCompleter());
+        getCommand("gamemode").setTabCompleter(new  codes.nbank.plugins.utils.tabcompleter.Gamemode());
+        getCommand("realname").setTabCompleter(new codes.nbank.plugins.utils.tabcompleter.RealName());
 
 
         /**
@@ -40,6 +36,9 @@ public final class Utils extends JavaPlugin {
         getCommand("gamemode").setExecutor(new Gamemode());
         getCommand("clearchat").setExecutor(new ClearChat());
         getCommand("fly").setExecutor(new Fly());
+        getCommand("backpack").setExecutor(new BackPack());
+        getCommand("nick").setExecutor(new Nick());
+        getCommand("realname").setExecutor(new RealName());
     }
 
     @Override

@@ -6,7 +6,7 @@ import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 
 import java.util.UUID;
 
-public class BanListener implements Listener {
+public class Ban implements Listener {
 
 
     @EventHandler

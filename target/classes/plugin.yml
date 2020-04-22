@@ -20,3 +20,13 @@ commands:
     description: fly
     aliases: [f]
     usage: /fly
+  backpack:
+    description: opens backpack
+    aliases: [bp]
+    usage: /backpack
+  nick:
+    description: set nickname
+    usage: /nick
+  realname:
+    description: gets realname from nickname
+    usage: /realname
