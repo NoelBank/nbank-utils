@@ -17,6 +17,7 @@ public class BackPack implements CommandExecutor {
             System.out.println("you are not a Player!");
             return false;
         }
+        String backpackPrefix = new Chat().commandPrefix("Backpack");
 
 
         if (sender instanceof Player) {

@@ -6,44 +6,29 @@ import java.util.Optional;
 
 public class Chat {
 
-    public String getServerPrefix() {
-        return "§7| §eSYSTEM§7 ";
+    public String commandPrefix(String command) {
+
+        return "§7| §a" + command + " §7» ";
     }
 
-    public String getMessageSeperator() {
-        return "§7 » ";
-    }
-
-    public String generateErrorMessage(String errorMessage) {
-        return getServerPrefix() + getErrorType(MessageTypes.ErrorMessage) + "§7 » " + errorMessage;
-    }
-    public String generateInfoMessage(String infoMessage) {
-        return getServerPrefix() + getErrorType(MessageTypes.InfoMessage) + "§7 » " + infoMessage;
+    public String serverPrefix() {
+        return "§7| §aServer §7» ";
     }
 
 
-    public String getErrorType(MessageTypes messageType) {
-
-        switch(messageType) {
-            case ErrorMessage:
-                return "§c ERROR";
-            case InfoMessage:
-                return "§9 INFO";
-            case WarnMessage:
-                return "§1 WARN";
-            default:
-                return "";
-        }
-
+    public String errorPrefix() {
+        return "§7| §cErorr §7» ";
     }
 
-    public enum MessageTypes {
-        ErrorMessage,
-        InfoMessage,
-        WarnMessage,
+    public String infoPreifx() {
+        return "§7| §9Info §7» ";
     }
 
-    public String getChatPrefix(Player player) {
+    public String missingPermissionMessage() {
+            return errorPrefix()+"Dir fehlen die nötigen Rechte um diesen Command auszuführen";
+    }
+
+    public String chatPrefix(Player player) {
         return getPlayerChatColor(player) + " » ";
     }
 

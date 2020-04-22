@@ -11,11 +11,13 @@ public class ClearChat implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String s, String[] args) {
 
-        for (int i = 0; i < 100; i++){
+        for (int i = 0; i < 100; i++) {
             sender.getServer().broadcastMessage("");
         }
+        String clearchat = new Chat().commandPrefix("ClearChat");
 
-        sender.getServer().broadcastMessage(new Chat().generateInfoMessage("Der Chat wurde von " + sender.getName() + " geleert"));
+
+        sender.getServer().broadcastMessage(clearchat + "Der Chat wurde von §e" + sender.getName() + "§7 geleert");
 
         return true;
     }

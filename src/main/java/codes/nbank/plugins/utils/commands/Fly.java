@@ -15,7 +15,8 @@ public class Fly implements CommandExecutor {
             System.out.println("you are not a Player!");
             return false;
         }
-
+        String errorMessage = new Chat().errorPrefix();
+        String realNamePrefix = new Chat().commandPrefix("Fly");
 
         if (sender instanceof Player) {
             Player player = ((Player) sender).getPlayer();
@@ -25,9 +26,9 @@ public class Fly implements CommandExecutor {
                 player.setAllowFlight(!flying);
                 if (flying == true) {
                     // turn off
-                    sender.sendMessage(new Chat().generateInfoMessage("Du hast den Flugmodus beendet"));
+                    sender.sendMessage(realNamePrefix + "Du hast den Flugmodus beendet");
                 } else {
-                    sender.sendMessage(new Chat().generateInfoMessage("Du hast dich in den Flugmodus gesetzt"));
+                    sender.sendMessage(realNamePrefix + "Du hast dich in den Flugmodus gesetzt");
 
                 }
 
@@ -40,23 +41,22 @@ public class Fly implements CommandExecutor {
 
                     if (targetPlayerFlying == true) {
 
-                        targetPlayer.sendMessage(new Chat().generateInfoMessage("Der Spieler " + player.getDisplayName() + " hat den Flugmodus für dich deaktiviert"));
-                        sender.sendMessage(new Chat().generateInfoMessage("Du hast für den Spieler " + targetPlayer.getDisplayName()+ " den Flugmodus deaktiviert"));
+                        targetPlayer.sendMessage(realNamePrefix + "Der Spieler §e" + player.getDisplayName() + "§7 hat den Flugmodus für dich deaktiviert");
+                        sender.sendMessage(realNamePrefix + "Du hast für den Spieler §e" + targetPlayer.getDisplayName() + "§7 den Flugmodus deaktiviert");
 
                     } else {
-                    targetPlayer.sendMessage(new Chat().generateInfoMessage("Der Spieler " + player.getDisplayName() + " hat dich in den Flugmodus gesetzt"));
-                    sender.sendMessage(new Chat().generateInfoMessage("Du hast den Spieler " + targetPlayer.getDisplayName()+ " in den Flugmodus gesetzt"));
+                        targetPlayer.sendMessage(realNamePrefix + "Der Spieler §e" + player.getDisplayName() + "§7 hat dich in den Flugmodus gesetzt");
+                        sender.sendMessage(realNamePrefix + "Du hast den Spieler §e" + targetPlayer.getDisplayName() + "§7 in den Flugmodus gesetzt");
                     }
 
                 } else {
-                    sender.sendMessage(new Chat().generateErrorMessage("Der gesuchte Spieler ist nicht Online " + args[1]));
+                    sender.sendMessage(realNamePrefix + "Der gesuchte Spieler ist nicht Online §e" + args[1]);
 
                 }
 
 
-
-                } else {
-                sender.sendMessage("wrong command use");
+            } else {
+                sender.sendMessage(errorMessage + "Bitte vewende /fly <name>");
             }
         }
         return true;

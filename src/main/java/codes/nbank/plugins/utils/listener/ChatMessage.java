@@ -11,6 +11,6 @@ public class ChatMessage implements Listener {
     // LOW priority makes this event fire before NORMAL priority, so that we can properly rewrite event messages..
     @EventHandler(priority = EventPriority.LOW, ignoreCancelled = false)
     public void onChat(AsyncPlayerChatEvent event) {
-        event.setFormat(new Chat().getChatPrefix(event.getPlayer()) + event.getMessage());
+        event.setFormat(new Chat().chatPrefix(event.getPlayer()) + event.getMessage());
     }
 }

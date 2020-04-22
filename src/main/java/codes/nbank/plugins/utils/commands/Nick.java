@@ -19,16 +19,19 @@ public class Nick implements CommandExecutor {
         if (sender instanceof Player) {
             Player player = ((Player) sender).getPlayer();
 
+            String errorMessage = new Chat().errorPrefix();
+            String realNamePrefix = new Chat().commandPrefix("Nick");
+
 
             if (args.length == 0) {
                 player.setDisplayName(player.getName());
-                sender.sendMessage(new Chat().generateInfoMessage("Dein Nick Name wurde wieder zurückgesetzt"));
+                sender.sendMessage(realNamePrefix + "Dein Nick Name wurde wieder zurückgesetzt");
             } else if (args.length == 1) {
                 player.setDisplayName(args[0]);
-                sender.sendMessage(new Chat().generateInfoMessage("Dein Nick Name auf " + args[0] + " gesetzt"));
+                sender.sendMessage(realNamePrefix + "Dein Nick Name auf §e" + args[0] + " §7gesetzt");
 
             } else {
-                sender.sendMessage(new Chat().generateErrorMessage("Bitte benutze /nick <name>"));
+                sender.sendMessage(errorMessage + "Bitte benutze /nick <name>");
 
             }
         }

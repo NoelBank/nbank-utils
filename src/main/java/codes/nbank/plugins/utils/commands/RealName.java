@@ -12,16 +12,18 @@ public class RealName implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String s, String[] args) {
 
+        String errorMessage = new Chat().errorPrefix();
+        String realNamePrefix = new Chat().commandPrefix("Nick");
 
         if (args.length == 0) {
-            sender.sendMessage(new Chat().generateErrorMessage("Bitte benutze /realname <name>"));
+            sender.sendMessage(errorMessage + "Bitte benutze /realname <name>");
 
         } else if (args.length == 1) {
             for (Player player : sender.getServer().getOnlinePlayers()) {
                 if (player.getDisplayName().equalsIgnoreCase(args[0])) {
-                    sender.sendMessage(new Chat().generateInfoMessage("Der echte Name von " + player.getDisplayName() + " lautet " + player.getName()));
+                    sender.sendMessage(realNamePrefix + "Der echte Name von §e" + player.getDisplayName() + "§7 lautet §e" + player.getName());
                 } else {
-                    sender.sendMessage(new Chat().generateErrorMessage("Der Spieler ist nicht Online"));
+                    sender.sendMessage(realNamePrefix + "Der Spieler §e" + args[0] + "§7 ist nicht Online");
 
                 }
 
@@ -29,7 +31,7 @@ public class RealName implements CommandExecutor {
 
 
         } else {
-            sender.sendMessage(new Chat().generateErrorMessage("Bitte benutze /realname <name>"));
+            sender.sendMessage(new Chat().errorPrefix() + "Bitte benutze /realname <name>");
 
         }
 
