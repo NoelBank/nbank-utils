@@ -8,6 +8,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 public class JoinMessage implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
-        event.setJoinMessage(new Chat().serverPrefix() + event.getPlayer().getDisplayName() + " hat den Server betreten.");
+        event.setJoinMessage("§2» §7" + event.getPlayer().getDisplayName());
     }
 }

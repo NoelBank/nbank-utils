@@ -15,6 +15,11 @@ public class RealName implements CommandExecutor {
         String errorMessage = new Chat().errorPrefix();
         String realNamePrefix = new Chat().commandPrefix("Nick");
 
+        if (!sender.isOp()) {
+            sender.sendMessage(new Chat().missingPermissionMessage());
+            return true;
+        }
+
         if (args.length == 0) {
             sender.sendMessage(errorMessage + "Bitte benutze /realname <name>");
 

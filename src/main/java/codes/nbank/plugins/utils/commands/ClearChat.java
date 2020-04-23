@@ -11,10 +11,16 @@ public class ClearChat implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String s, String[] args) {
+        if (!sender.isOp()) {
+            sender.sendMessage(new Chat().missingPermissionMessage());
+            return true;
+        }
+
 
         for (int i = 0; i < 100; i++) {
             sender.getServer().broadcastMessage("");
         }
+
         String clearchat = new Chat().commandPrefix("ClearChat");
 
 

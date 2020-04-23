@@ -36,6 +36,11 @@ public class Fly implements CommandExecutor {
                 Player targetPlayer = player.getServer().getPlayer(args[0]);
                 Boolean targetPlayerFlying = player.getAllowFlight();
 
+                if (!sender.isOp()) {
+                    sender.sendMessage(new Chat().missingPermissionMessage());
+                    return true;
+                }
+
                 if (targetPlayer != null) {
                     targetPlayer.setAllowFlight(!targetPlayerFlying);
 

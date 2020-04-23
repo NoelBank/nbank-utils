@@ -16,6 +16,11 @@ public class Nick implements CommandExecutor {
             return false;
         }
 
+        if (!sender.isOp()) {
+            sender.sendMessage(new Chat().missingPermissionMessage());
+            return true;
+        }
+
         if (sender instanceof Player) {
             Player player = ((Player) sender).getPlayer();
 

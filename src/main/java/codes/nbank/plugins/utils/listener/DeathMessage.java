@@ -19,6 +19,6 @@ public class DeathMessage implements Listener {
         /**
          * set custom death messages
          */
-        playerEvent.setDeathMessage(new Chat().serverPrefix() + player.getDisplayName() + " starb.");
+        playerEvent.setDeathMessage(new Chat().serverPrefix() + player.getDisplayName() + " ist gestorben.");
     }
 }
