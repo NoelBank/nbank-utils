@@ -26,9 +26,9 @@ public class Fly implements CommandExecutor {
                 player.setAllowFlight(!flying);
                 if (flying == true) {
                     // turn off
-                    sender.sendMessage(realNamePrefix + "Du hast den Flugmodus beendet");
+                    sender.sendMessage(realNamePrefix + "Du hast den §eFlugmodus§7 beendet");
                 } else {
-                    sender.sendMessage(realNamePrefix + "Du hast dich in den Flugmodus gesetzt");
+                    sender.sendMessage(realNamePrefix + "Du hast dich in den §eFlugmodus§7 gesetzt");
 
                 }
 

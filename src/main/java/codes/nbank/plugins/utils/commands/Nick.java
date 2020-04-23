@@ -25,10 +25,10 @@ public class Nick implements CommandExecutor {
 
             if (args.length == 0) {
                 player.setDisplayName(player.getName());
-                sender.sendMessage(realNamePrefix + "Dein Nick Name wurde wieder zurückgesetzt");
+                sender.sendMessage(realNamePrefix + "Dein §eNickname§7 wurde wieder zurückgesetzt");
             } else if (args.length == 1) {
                 player.setDisplayName(args[0]);
-                sender.sendMessage(realNamePrefix + "Dein Nick Name auf §e" + args[0] + " §7gesetzt");
+                sender.sendMessage(realNamePrefix + "Du hast deinen §eNickname§7 auf §e" + args[0] + " §7geändert");
 
             } else {
                 sender.sendMessage(errorMessage + "Bitte benutze /nick <name>");

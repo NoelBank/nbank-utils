@@ -5,6 +5,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.entity.Player;
 
 public class ClearChat implements CommandExecutor {
 
@@ -17,7 +18,12 @@ public class ClearChat implements CommandExecutor {
         String clearchat = new Chat().commandPrefix("ClearChat");
 
 
-        sender.getServer().broadcastMessage(clearchat + "Der Chat wurde von §e" + sender.getName() + "§7 geleert");
+        if (sender instanceof Player) {
+
+            sender.getServer().broadcastMessage(clearchat + "Der Chat wurde von §e" + ((Player) sender).getPlayer().getDisplayName() + "§7 geleert");
+        } else {
+            sender.getServer().broadcastMessage(clearchat + "Der Chat wurde von §e" + sender.getName() + "§7 geleert");
+        }
 
         return true;
     }
