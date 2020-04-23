@@ -25,6 +25,7 @@ public class RealName implements CommandExecutor {
 
         } else if (args.length == 1) {
             for (Player player : sender.getServer().getOnlinePlayers()) {
+
                 if (player.getDisplayName().equalsIgnoreCase(args[0])) {
                     sender.sendMessage(realNamePrefix + "Der echte Name von §e" + player.getDisplayName() + "§7 lautet §e" + player.getName());
                 } else {

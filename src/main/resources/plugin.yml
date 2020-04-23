@@ -30,3 +30,7 @@ commands:
   realname:
     description: gets realname from nickname
     usage: /realname
+  health:
+    description: sets max health
+    aliases: [hl]
+    usage: /health
