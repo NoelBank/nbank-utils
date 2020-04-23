@@ -15,6 +15,7 @@ public class Fly implements CommandExecutor {
             System.out.println("you are not a Player!");
             return false;
         }
+
         String errorMessage = new Chat().errorPrefix();
         String realNamePrefix = new Chat().commandPrefix("Fly");
 

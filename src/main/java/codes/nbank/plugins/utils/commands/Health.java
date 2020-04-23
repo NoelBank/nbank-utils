@@ -23,13 +23,13 @@ public class Health implements CommandExecutor {
 
 
         String errorMessage = new Chat().errorPrefix();
-        String realNamePrefix = new Chat().commandPrefix("Health");
+        String healthPrefix = new Chat().commandPrefix("Health");
 
         if (sender instanceof Player) {
             Player player = ((Player) sender).getPlayer();
 
             if (args.length == 0) {
-                sender.sendMessage(realNamePrefix + "Du hast dich §egeheilt§7 beendet");
+                sender.sendMessage(healthPrefix + "Du hast dich §egeheilt§7 beendet");
                 player.setHealth(20);
                 player.setFoodLevel(20);
 
@@ -41,11 +41,11 @@ public class Health implements CommandExecutor {
                     targetPlayer.setHealth(20);
                     targetPlayer.setFoodLevel(20);
 
-                    targetPlayer.sendMessage(realNamePrefix + "Der Spieler §e" + player.getDisplayName() + "§7 hat dich geheilt");
-                    sender.sendMessage(realNamePrefix + "Du hast den Spieler §e" + targetPlayer.getDisplayName() + "§7 geheilt");
+                    targetPlayer.sendMessage(healthPrefix + "Der Spieler §e" + player.getDisplayName() + "§7 hat dich geheilt");
+                    sender.sendMessage(healthPrefix + "Du hast den Spieler §e" + targetPlayer.getDisplayName() + "§7 geheilt");
 
                 } else {
-                    sender.sendMessage(realNamePrefix + "Der gesuchte Spieler ist nicht Online §e" + args[1]);
+                    sender.sendMessage(healthPrefix + "Der gesuchte Spieler ist nicht Online §e" + args[1]);
 
                 }
 
