@@ -39,7 +39,7 @@ public final class Utils extends JavaPlugin {
         getCommand("backpack").setExecutor(new BackPack());
         getCommand("nick").setExecutor(new Nick());
         getCommand("realname").setExecutor(new RealName());
-        getCommand("health").setExecutor(new Health());
+        getCommand("heal").setExecutor(new Heal());
     }
 
     @Override
