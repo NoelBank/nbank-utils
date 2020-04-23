@@ -27,19 +27,20 @@ public class Health implements CommandExecutor {
 
         if (sender instanceof Player) {
             Player player = ((Player) sender).getPlayer();
-            Boolean flying = player.getAllowFlight();
 
             if (args.length == 0) {
                 sender.sendMessage(realNamePrefix + "Du hast dich §egeheilt§7 beendet");
-                ((Player) sender).getPlayer().setHealth(20);
+                player.setHealth(20);
+                player.setFoodLevel(20);
 
             } else if (args.length == 1) {
                 Player targetPlayer = player.getServer().getPlayer(args[0]);
 
-
                 if (targetPlayer != null) {
 
                     targetPlayer.setHealth(20);
+                    targetPlayer.setFoodLevel(20);
+
                     targetPlayer.sendMessage(realNamePrefix + "Der Spieler §e" + player.getDisplayName() + "§7 hat dich geheilt");
                     sender.sendMessage(realNamePrefix + "Du hast den Spieler §e" + targetPlayer.getDisplayName() + "§7 geheilt");
 
