@@ -3,9 +3,14 @@ package codes.nbank.plugins.utils;
 import codes.nbank.plugins.utils.commands.*;
 import codes.nbank.plugins.utils.listener.*;
 
+import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public final class Utils extends JavaPlugin {
+    public static Map<String, Location> positionsList = new HashMap<String, Location>();
 
     @Override
     public void onEnable() {
@@ -40,11 +45,15 @@ public final class Utils extends JavaPlugin {
         getCommand("nick").setExecutor(new Nick());
         getCommand("realname").setExecutor(new RealName());
         getCommand("heal").setExecutor(new Heal());
+        getCommand("position").setExecutor(new Position());
+
     }
 
     @Override
     public void onDisable() {
         System.out.println("nbank plugin disabled");
+
+
 
     }
 

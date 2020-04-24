@@ -34,3 +34,6 @@ commands:
     description: sets max health
     aliases: [hl]
     usage: /heal
+  position:
+    description: sets and gets position
+    usage: /position
