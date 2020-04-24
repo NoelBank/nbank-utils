@@ -1,32 +1,27 @@
 package codes.nbank.plugins.utils.commands;
 
-import codes.nbank.plugins.utils.system.Chat;
+import codes.nbank.plugins.utils.system.Messages;
 import org.bukkit.GameMode;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.command.*;
 import org.bukkit.entity.Player;
 import org.bukkit.util.StringUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class Gamemode implements CommandExecutor {
+public class GamemodeCommand implements CommandExecutor, TabCompleter {
 
-    private String getGamemodeMessage(String gamemode) {
-        return "Dein §eSpielmodus §7wurde zu §e" + gamemode + "§7 geändert";
+    private String getGamemodeMessage(GameMode gamemode) {
+        return "Dein §eSpielmodus §7wurde zu §e" + Messages.gameModeString(gamemode) + "§7 geändert";
     }
 
-    private String getTargetGamemodeMessage(String playerName, String gamemode) {
-        return "Dein §eSpielmodus §7wurde von §e" + playerName + "§7 zu §e" + gamemode + "§7 geändert";
+    private String getTargetGamemodeMessage(String playerName, GameMode gamemode) {
+        return "Dein §eSpielmodus §7wurde von §e" + playerName + "§7 zu §e" + Messages.gameModeString(gamemode) + "§7 geändert";
     }
 
-    private String getSenderGamemodeMessage(String playerName, String gamemode) {
-        return "Der §eSpielmodus §7von §e" + playerName + "§7 wurde zu §e" + gamemode + "§7 geändert";
+    private String getSenderGamemodeMessage(String playerName, GameMode gamemode) {
+        return "Der §eSpielmodus §7von §e" + playerName + "§7 wurde zu §e" + Messages.gameModeString(gamemode) + "§7 geändert";
     }
 
     @Override
@@ -36,85 +31,97 @@ public class Gamemode implements CommandExecutor {
             return false;
         }
 
-
-
-        String errorMessage = new Chat().errorPrefix();
-        String gamemodePrefix = new Chat().commandPrefix("Gamemode");
+        String errorMessage = Messages.errorPrefix();
+        String gamemodePrefix = Messages.commandPrefix("Gamemode");
 
 
         if (sender instanceof Player) {
-            Player player = ((Player) sender).getPlayer();
-            if(!player.isOp()) {
-                sender.sendMessage(new Chat().missingPermissionMessage());
+            if (!sender.isOp()) {
+                sender.sendMessage(Messages.missingPermissionMessage());
                 return true;
             }
 
-            if (args.length <= 0) {
-                sender.sendMessage(errorMessage + "Bitte verwende /gamemode <stufe> <spieler>");
-            } else {
-                // this should be if user has set 1,2... creative...
-                if (args.length == 1) {
-                    if (args[0].equalsIgnoreCase("0") || args[0].equalsIgnoreCase("survival")) {
-                        player.setGameMode(GameMode.SURVIVAL);
-                        sender.sendMessage(gamemodePrefix + getGamemodeMessage("SURVIVAL"));
+            GameMode gameMode = null;
 
-                    } else if (args[0].equalsIgnoreCase("1") || args[0].equalsIgnoreCase("creative")) {
-                        player.setGameMode(GameMode.CREATIVE);
-                        sender.sendMessage(gamemodePrefix + getGamemodeMessage("CREATIVE"));
-
-                    } else if (args[0].equalsIgnoreCase("2") || args[0].equalsIgnoreCase("adventure")) {
-                        player.setGameMode(GameMode.ADVENTURE);
-                        sender.sendMessage(gamemodePrefix + getGamemodeMessage("ADVENTURE"));
-
-                    } else if (args[0].equalsIgnoreCase("3") || args[0].equalsIgnoreCase("spectator")) {
-                        player.setGameMode(GameMode.SPECTATOR);
-                        sender.sendMessage(gamemodePrefix + getGamemodeMessage("SPECTATOR"));
-
-                    } else {
-                        sender.sendMessage(errorMessage + "Diesen §eSpielmodus§7 kennt das System nicht " + args[0]);
-                    }
+            if (args.length == 1 || args.length == 2) {
+                switch (args[0]) {
+                    case "survival":
+                    case "0":
+                        gameMode = GameMode.SURVIVAL;
+                        break;
+                    case "creative":
+                    case "1":
+                        gameMode = GameMode.CREATIVE;
+                        break;
+                    case "adventure":
+                    case "2":
+                        gameMode = GameMode.ADVENTURE;
+                        break;
+                    case "spectator":
+                    case "3":
+                        gameMode = GameMode.SPECTATOR;
+                        break;
                 }
-                // this should be if user sets name of person
-                if (args.length == 2) {
-                    Player targetPlayer = player.getServer().getPlayer(args[1]);
-                    if (targetPlayer != null) {
-                        if (args[0].equalsIgnoreCase("0") || args[0].equalsIgnoreCase("survival")) {
-                            targetPlayer.setGameMode(GameMode.SURVIVAL);
-                            targetPlayer.sendMessage(gamemodePrefix + getTargetGamemodeMessage(player.getDisplayName(), "SURVIVAL"));
-                            sender.sendMessage(gamemodePrefix + getSenderGamemodeMessage(targetPlayer.getDisplayName(), "SURVIVAL"));
 
-                        } else if (args[0].equalsIgnoreCase("1") || args[0].equalsIgnoreCase("creative")) {
-                            targetPlayer.setGameMode(GameMode.CREATIVE);
-                            targetPlayer.sendMessage(gamemodePrefix + getTargetGamemodeMessage(player.getDisplayName(), "CREATIVE"));
-                            sender.sendMessage(gamemodePrefix + getSenderGamemodeMessage(targetPlayer.getDisplayName(), "CREATIVE"));
-
-                        } else if (args[0].equalsIgnoreCase("2") || args[0].equalsIgnoreCase("adventure")) {
-                            targetPlayer.setGameMode(GameMode.ADVENTURE);
-                            targetPlayer.sendMessage(gamemodePrefix + getTargetGamemodeMessage(player.getDisplayName(), "ADVENTURE"));
-                            sender.sendMessage(gamemodePrefix + getSenderGamemodeMessage(targetPlayer.getDisplayName(), "ADVENTURE"));
-
-                        } else if (args[0].equalsIgnoreCase("3") || args[0].equalsIgnoreCase("spectator")) {
-                            targetPlayer.setGameMode(GameMode.SPECTATOR);
-                            targetPlayer.sendMessage(gamemodePrefix + getTargetGamemodeMessage(player.getDisplayName(), "SPECTATOR"));
-                            sender.sendMessage(gamemodePrefix + getSenderGamemodeMessage(targetPlayer.getDisplayName(), "SPECTATOR"));
-
+                if (gameMode != null) {
+                    if (args.length == 1) {
+                        if (sender instanceof Player) {
+                            sender.sendMessage(gamemodePrefix + getGamemodeMessage(gameMode));
                         } else {
-                            sender.sendMessage(errorMessage + "Diesen Spielmodus kennt das System nicht " + args[0]);
+                            sender.sendMessage(errorMessage + "Du kannst dich nicht in einen Gamemode Setzen");
+                        }
+                    } else if (args.length == 2) {
+                        Player targetPlayer = ((Player) sender).getServer().getPlayer(args[1]);
+
+                        if (targetPlayer != null) {
+                            targetPlayer.setGameMode(gameMode);
+                            targetPlayer.sendMessage(gamemodePrefix + getTargetGamemodeMessage(((Player) sender).getPlayer().getDisplayName(), gameMode));
+                            sender.sendMessage(gamemodePrefix + getSenderGamemodeMessage(targetPlayer.getDisplayName(), gameMode));
+                        } else {
+                            sender.sendMessage(errorMessage + "Der gewünschte Spieler ist nicht verfügbar");
                         }
 
-                    } else {
-                        sender.sendMessage(errorMessage + "Der gesuchte Spieler ist nicht Online " + args[1]);
-
                     }
+                } else {
+                    sender.sendMessage(errorMessage + "Dieser §eGamemode §7ist unbekannt");
                 }
-
-                if (args.length >= 3) {
-                    sender.sendMessage(errorMessage + "Bitte verwende /gamemode <stufe> <spieler>");
-                }
+            } else {
+                sender.sendMessage(errorMessage + "Bitte verwende /gamemode [stufe] <spieler>");
             }
         }
 
+
         return true;
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command cmd, String label, String[] args) {
+        List<String> completions = new ArrayList<>();
+        List<String> commands = new ArrayList<>();
+
+        if (args.length == 1) {
+            commands.add("0");
+            commands.add("1");
+            commands.add("2");
+            commands.add("3");
+            commands.add("survival");
+            commands.add("creative");
+            commands.add("adventure");
+            commands.add("spectator");
+
+            StringUtil.copyPartialMatches(args[0], commands, completions);
+
+        } else if (args.length == 2) {
+            for (Player player : sender.getServer().getOnlinePlayers()) {
+                commands.add(player.getDisplayName());
+            }
+
+            StringUtil.copyPartialMatches(args[1], commands, completions);
+
+        }
+
+        Collections.sort(completions);
+        return completions;
     }
 
 
