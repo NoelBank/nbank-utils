@@ -1,6 +1,6 @@
-package codes.nbank.plugins.utils.commands;
+package codes.nbank.plugins.utils.Mods.functions;
 
-import codes.nbank.plugins.utils.system.Chat;
+import codes.nbank.plugins.utils.system.Messages;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -17,15 +17,15 @@ public class Nick implements CommandExecutor {
         }
 
         if (!sender.isOp()) {
-            sender.sendMessage(new Chat().missingPermissionMessage());
+            sender.sendMessage(Messages.missingPermissionMessage());
             return true;
         }
 
         if (sender instanceof Player) {
             Player player = ((Player) sender).getPlayer();
 
-            String errorMessage = new Chat().errorPrefix();
-            String realNamePrefix = new Chat().commandPrefix("Nick");
+            String errorMessage = Messages.errorPrefix();
+            String realNamePrefix = Messages.commandPrefix("Nick");
 
 
             if (args.length == 0) {

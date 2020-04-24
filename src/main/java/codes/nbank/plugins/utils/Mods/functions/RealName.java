@@ -1,22 +1,22 @@
-package codes.nbank.plugins.utils.commands;
+package codes.nbank.plugins.utils.Mods.functions;
 
-import codes.nbank.plugins.utils.system.Chat;
+import codes.nbank.plugins.utils.system.Messages;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
 public class RealName implements CommandExecutor {
 
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String s, String[] args) {
 
-        String errorMessage = new Chat().errorPrefix();
-        String realNamePrefix = new Chat().commandPrefix("Nick");
+        String errorMessage = Messages.errorPrefix();
+        String realNamePrefix = Messages.commandPrefix("Nick");
 
         if (!sender.isOp()) {
-            sender.sendMessage(new Chat().missingPermissionMessage());
+            sender.sendMessage(Messages.missingPermissionMessage());
             return true;
         }
 
@@ -37,7 +37,7 @@ public class RealName implements CommandExecutor {
 
 
         } else {
-            sender.sendMessage(new Chat().errorPrefix() + "Bitte benutze /realname <name>");
+            sender.sendMessage(Messages.errorPrefix() + "Bitte benutze /realname <name>");
 
         }
 

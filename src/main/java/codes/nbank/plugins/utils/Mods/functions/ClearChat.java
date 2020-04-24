@@ -1,10 +1,9 @@
-package codes.nbank.plugins.utils.commands;
+package codes.nbank.plugins.utils.Mods.functions;
 
-import codes.nbank.plugins.utils.system.Chat;
+import codes.nbank.plugins.utils.system.Messages;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
 public class ClearChat implements CommandExecutor {
@@ -12,7 +11,7 @@ public class ClearChat implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String s, String[] args) {
         if (!sender.isOp()) {
-            sender.sendMessage(new Chat().missingPermissionMessage());
+            sender.sendMessage(Messages.missingPermissionMessage());
             return true;
         }
 
@@ -21,7 +20,7 @@ public class ClearChat implements CommandExecutor {
             sender.getServer().broadcastMessage("");
         }
 
-        String clearchat = new Chat().commandPrefix("ClearChat");
+        String clearchat = new Messages().commandPrefix("ClearChat");
 
 
         if (sender instanceof Player) {

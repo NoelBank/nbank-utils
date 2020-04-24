@@ -1,6 +1,6 @@
 package codes.nbank.plugins.utils.listener;
 
-import codes.nbank.plugins.utils.system.Chat;
+import codes.nbank.plugins.utils.system.Messages;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -11,6 +11,6 @@ public class ChatMessage implements Listener {
     // LOW priority makes this event fire before NORMAL priority, so that we can properly rewrite event messages..
     @EventHandler(priority = EventPriority.LOW, ignoreCancelled = false)
     public void onChat(AsyncPlayerChatEvent event) {
-        event.setFormat(new Chat().chatPrefix(event.getPlayer()) + event.getMessage());
+        event.setFormat(Messages.chatPrefix(event.getPlayer()) + event.getMessage());
     }
 }

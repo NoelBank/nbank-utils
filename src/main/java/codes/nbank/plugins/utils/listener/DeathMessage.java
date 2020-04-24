@@ -1,6 +1,6 @@
 package codes.nbank.plugins.utils.listener;
 
-import codes.nbank.plugins.utils.system.Chat;
+import codes.nbank.plugins.utils.system.Messages;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -19,6 +19,6 @@ public class DeathMessage implements Listener {
         /**
          * set custom death messages
          */
-        playerEvent.setDeathMessage(new Chat().serverPrefix() + player.getDisplayName() + " ist gestorben.");
+        playerEvent.setDeathMessage(Messages.serverPrefix() + player.getDisplayName() + " ist gestorben.");
     }
 }

@@ -1,6 +1,6 @@
-package codes.nbank.plugins.utils.commands;
+package codes.nbank.plugins.utils.Mods.functions;
 
-import codes.nbank.plugins.utils.system.Chat;
+import codes.nbank.plugins.utils.system.Messages;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -17,7 +17,7 @@ public class BackPack implements CommandExecutor {
             System.out.println("you are not a Player!");
             return false;
         }
-        String backpackPrefix = new Chat().commandPrefix("Backpack");
+        String backpackPrefix = Messages.commandPrefix("Backpack");
 
 
         if (sender instanceof Player) {
@@ -27,7 +27,7 @@ public class BackPack implements CommandExecutor {
 
             player.openInventory(backpack);
 
-System.out.println(backpack.getContents());
+            System.out.println(backpack.getContents());
         }
         return true;
     }

@@ -1,5 +1,6 @@
 package codes.nbank.plugins.utils;
 
+import codes.nbank.plugins.utils.Mods.functions.*;
 import codes.nbank.plugins.utils.commands.*;
 import codes.nbank.plugins.utils.listener.*;
 
@@ -10,7 +11,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class Utils extends JavaPlugin {
-    public static Map<String, Location> positionsList = new HashMap<String, Location>();
 
     @Override
     public void onEnable() {
@@ -31,14 +31,14 @@ public final class Utils extends JavaPlugin {
          *
          * set autocomplete
          */
-        getCommand("gamemode").setTabCompleter(new  codes.nbank.plugins.utils.tabcompleter.Gamemode());
-        getCommand("realname").setTabCompleter(new codes.nbank.plugins.utils.tabcompleter.RealName());
+        getCommand("gamemode").setTabCompleter(new GamemodeCommand());
+        getCommand("realname").setTabCompleter(new codes.nbank.plugins.utils.Mods.tabcompleter.RealName());
 
 
         /**
          * set command
          */
-        getCommand("gamemode").setExecutor(new Gamemode());
+        getCommand("gamemode").setExecutor(new GamemodeCommand());
         getCommand("clearchat").setExecutor(new ClearChat());
         getCommand("fly").setExecutor(new Fly());
         getCommand("backpack").setExecutor(new BackPack());

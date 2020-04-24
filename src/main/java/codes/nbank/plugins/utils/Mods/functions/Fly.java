@@ -1,6 +1,6 @@
-package codes.nbank.plugins.utils.commands;
+package codes.nbank.plugins.utils.Mods.functions;
 
-import codes.nbank.plugins.utils.system.Chat;
+import codes.nbank.plugins.utils.system.Messages;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -16,8 +16,8 @@ public class Fly implements CommandExecutor {
             return false;
         }
 
-        String errorMessage = new Chat().errorPrefix();
-        String realNamePrefix = new Chat().commandPrefix("Fly");
+        String errorMessage = Messages.errorPrefix();
+        String realNamePrefix = Messages.commandPrefix("Fly");
 
         if (sender instanceof Player) {
             Player player = ((Player) sender).getPlayer();
@@ -38,7 +38,7 @@ public class Fly implements CommandExecutor {
                 Boolean targetPlayerFlying = player.getAllowFlight();
 
                 if (!sender.isOp()) {
-                    sender.sendMessage(new Chat().missingPermissionMessage());
+                    sender.sendMessage(Messages.missingPermissionMessage());
                     return true;
                 }
 

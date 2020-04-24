@@ -1,6 +1,6 @@
-package codes.nbank.plugins.utils.commands;
+package codes.nbank.plugins.utils.Mods.functions;
 
-import codes.nbank.plugins.utils.system.Chat;
+import codes.nbank.plugins.utils.system.Messages;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -17,13 +17,13 @@ public class Heal implements CommandExecutor {
         }
 
         if (!sender.isOp()) {
-            sender.sendMessage(new Chat().missingPermissionMessage());
+            sender.sendMessage(Messages.missingPermissionMessage());
             return true;
         }
 
 
-        String errorMessage = new Chat().errorPrefix();
-        String healthPrefix = new Chat().commandPrefix("Health");
+        String errorMessage = Messages.errorPrefix();
+        String healthPrefix = Messages.commandPrefix("Health");
 
         if (sender instanceof Player) {
             Player player = ((Player) sender).getPlayer();
