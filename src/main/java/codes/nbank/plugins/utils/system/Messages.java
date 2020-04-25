@@ -1,7 +1,12 @@
 package codes.nbank.plugins.utils.system;
 
 import org.bukkit.GameMode;
+import org.bukkit.Location;
+import org.bukkit.World;
+import org.bukkit.WorldType;
 import org.bukkit.entity.Player;
+
+import java.util.Locale;
 
 public class Messages {
 
@@ -49,6 +54,18 @@ public class Messages {
                 return "Adventure";
             case SPECTATOR:
                 return "Spectator";
+        }
+        return "";
+    }
+
+    public static String getWorldName(String worldName) {
+        switch (worldName) {
+            case "world":
+                return "Overworld";
+            case "nether":
+                return "Nether";
+            case "end":
+                return "End";
         }
         return "";
     }
