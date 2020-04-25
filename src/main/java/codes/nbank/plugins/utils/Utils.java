@@ -32,7 +32,7 @@ public final class Utils extends JavaPlugin {
          * set autocomplete
          */
         getCommand("gamemode").setTabCompleter(new GamemodeCommand());
-        getCommand("realname").setTabCompleter(new codes.nbank.plugins.utils.Mods.tabcompleter.RealName());
+        getCommand("realname").setTabCompleter(new RealName());
 
 
         /**
