@@ -1,5 +1,6 @@
 package codes.nbank.plugins.utils.Mods.functions;
 
+import codes.nbank.plugins.utils.Mods.handler.TabList;
 import codes.nbank.plugins.utils.system.Messages;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
