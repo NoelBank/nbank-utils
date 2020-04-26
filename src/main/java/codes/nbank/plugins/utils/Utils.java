@@ -15,15 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class Utils extends JavaPlugin {
-    private String databaseURL = "10.35.46.23";
-    private String database = "k66250_database";
-    private String username = "10.35.46.23";
-    private String password = "3Dfrt221";
-    private String port = "3306";
-
-    final String url = "jdbc:mysql://" + databaseURL + ":" + 3306 + "/" + database + "";
-
-
+    
     @Override
     public void onEnable() {
         System.out.println("nbank plugin loaded");
