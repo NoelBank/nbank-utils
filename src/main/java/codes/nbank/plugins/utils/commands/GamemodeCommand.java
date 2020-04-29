@@ -67,6 +67,7 @@ public class GamemodeCommand implements CommandExecutor, TabCompleter {
                     if (args.length == 1) {
                         if (sender instanceof Player) {
                             sender.sendMessage(gamemodePrefix + getGamemodeMessage(gameMode));
+                            ((Player) sender).getPlayer().setGameMode(gameMode);
                         } else {
                             sender.sendMessage(errorMessage + "Du kannst dich nicht in einen Gamemode Setzen");
                         }
@@ -89,7 +90,6 @@ public class GamemodeCommand implements CommandExecutor, TabCompleter {
                 sender.sendMessage(errorMessage + "Bitte verwende /gamemode [stufe] <spieler>");
             }
         }
-
 
         return true;
     }

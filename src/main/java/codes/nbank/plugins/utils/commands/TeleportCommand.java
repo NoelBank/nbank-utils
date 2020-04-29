@@ -32,7 +32,7 @@ public class TeleportCommand implements CommandExecutor, TabCompleter {
 
             if (args.length == 1 || args.length == 2  || args.length == 3) {
 
-                
+
             } else {
                 sender.sendMessage(errorMessage + "Bitte verwende /tp");
             }
