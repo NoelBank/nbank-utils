@@ -43,14 +43,15 @@ public class Fly implements CommandExecutor {
                 }
 
                 if (targetPlayer != null) {
-                    targetPlayer.setAllowFlight(!targetPlayerFlying);
 
                     if (targetPlayerFlying == true) {
+                        targetPlayer.setAllowFlight(true);
 
                         targetPlayer.sendMessage(realNamePrefix + "Der Spieler §e" + player.getDisplayName() + "§7 hat den Flugmodus für dich deaktiviert");
                         sender.sendMessage(realNamePrefix + "Du hast für den Spieler §e" + targetPlayer.getDisplayName() + "§7 den Flugmodus deaktiviert");
-
                     } else {
+                        targetPlayer.setAllowFlight(false);
+
                         targetPlayer.sendMessage(realNamePrefix + "Der Spieler §e" + player.getDisplayName() + "§7 hat dich in den Flugmodus gesetzt");
                         sender.sendMessage(realNamePrefix + "Du hast den Spieler §e" + targetPlayer.getDisplayName() + "§7 in den Flugmodus gesetzt");
                     }
