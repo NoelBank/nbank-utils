@@ -34,17 +34,18 @@ public class Fly implements CommandExecutor {
                 }
 
             } else if (args.length == 1) {
-                Player targetPlayer = player.getServer().getPlayer(args[0]);
-                Boolean targetPlayerFlying = player.getAllowFlight();
-
                 if (!sender.isOp()) {
                     sender.sendMessage(Messages.missingPermissionMessage());
                     return true;
                 }
 
+                Player targetPlayer = player.getServer().getPlayer(args[0]);
+
+
+
                 if (targetPlayer != null) {
 
-                    if (targetPlayerFlying == true) {
+                    if (targetPlayer.getAllowFlight() == false) {
                         targetPlayer.setAllowFlight(true);
 
                         targetPlayer.sendMessage(realNamePrefix + "Der Spieler §e" + player.getDisplayName() + "§7 hat den Flugmodus für dich deaktiviert");
