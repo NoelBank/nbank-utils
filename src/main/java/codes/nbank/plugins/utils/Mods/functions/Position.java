@@ -6,15 +6,18 @@ import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Location;
 import org.bukkit.command.*;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.util.StringUtil;
 
+import java.io.File;
 import java.util.*;
 
 public class Position implements CommandExecutor, TabCompleter {
 
     public static Map<String, Location> positionsList = new HashMap<String, Location>();
-
+    File positionFile = new File("plugins//nbank-utils//locations.yaml");
+    YamlConfiguration config = YamlConfiguration.loadConfiguration(positionFile);
 
 
     private TextComponent positionsFormated(Map<String, Location> positions) {
@@ -62,10 +65,12 @@ public class Position implements CommandExecutor, TabCompleter {
 
             } else if (args.length == 1) {
                 if (positionsList.containsKey(args[0])) {
-                    Location loc = positionsList.get(args[0]);
+                    Location loc = (Location) config.get(args[0]);
+
                     player.sendMessage(positionPrefix + "Die Position von §e" + args[0] + "§7 lautet §7[§e" + loc.getBlockX() + "§7, §e" + loc.getBlockY() + "§7, §e" + loc.getBlockZ() + "§7, §e" + Messages.getWorldName(loc.getWorld().getName()) + "§7]");
                 } else {
                     positionsList.put(args[0], player.getLocation());
+                    config.set(args[0], player.getLocation());
                     System.out.println(player.getLocation());
 
                     player.sendMessage(positionPrefix + "Du hast §e" + args[0] + "§7 in die Positions-Liste hinzugefügt");
