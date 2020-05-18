@@ -3,10 +3,10 @@ version: 1.0-SNAPSHOT
 main: codes.nbank.plugins.utils.Utils
 api-version: 1.15
 prefix: nbank
-load: STARTUP
 author: Noel Bank
 description: nbank utils plugin
 website: https://nbank.tech
+depend: [CaveCloud]
 commands:
   gamemode:
     description: Sets Gamemode

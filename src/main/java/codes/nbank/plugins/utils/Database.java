@@ -1,13 +1,21 @@
 package codes.nbank.plugins.utils;
 
-import java.sql.*;
+
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoDatabase;
+
 
 public class Database {
+    public static MongoClient mongoClient;
+    public static MongoDatabase mongoDatabase;
 
-    public Connection connection;
+    public static void connect() {
+        mongoClient = MongoClients.create("mongodb+srv://root:" + Utils.dbPassword + "@cluster0-lk7np.mongodb.net");
+        mongoDatabase = mongoClient.getDatabase("minecraft");
+    }
 
-    public void openConnection(String databaseUrl, String database, String username, String password, String port) throws SQLException, ClassNotFoundException {
-
-
+    public static void disconnect() {
+        mongoClient.close();
     }
 }

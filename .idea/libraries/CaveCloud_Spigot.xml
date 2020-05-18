@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="CaveCloud_Spigot">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/cloudSystem/CaveCloud_Spigot.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/libs/cloudSystem/CaveCloud_Spigot.jar!/" />
+    </SOURCES>
+  </library>
+</component>

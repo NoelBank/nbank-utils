@@ -4,22 +4,38 @@ import codes.nbank.plugins.utils.Mods.functions.*;
 import codes.nbank.plugins.utils.commands.*;
 import codes.nbank.plugins.utils.listener.*;
 
-import org.bukkit.Location;
+import net.cavecloud.spigot.SpigotApi;
+import net.cavecloud.spigot.utils.Server;
+import org.bukkit.Bukkit;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.HashMap;
-import java.util.Map;
 
 public final class Utils extends JavaPlugin {
-    
+    public FileConfiguration config = getConfig();
+    public static String dbPassword;
+    public static String serverName;
+
     @Override
     public void onEnable() {
-        System.out.println("nbank plugin loaded");
 
+        /**
+         * set default configure stuff
+         */
+        config.addDefault("dbPassword", "supersecret");
+        config.options().copyDefaults(true);
+        saveConfig();
+
+        Server self = SpigotApi.getSelfServer();
+
+        System.out.println("nbank plugin loaded");
+        System.out.println("Server ID: " + self.getId());
+
+        self.getServerData().setPlayers(Bukkit.getOnlinePlayers().size()).setGameState(SpigotApi.getGamestate("ONLINE")).setMaxplayers(20).setMotd("LOBBY-"+ self.getId());
+
+        SpigotApi.updateSelfServerData();
+
+        serverName = self.getServerGroup().getGroup() + "-" + self.getId();
 
         /**
          * This is used for listener
@@ -56,7 +72,8 @@ public final class Utils extends JavaPlugin {
          * open database connection
          */
 
-
+        dbPassword = getConfig().getString("dbPassword");
+        Database.connect();
 
 
     }
@@ -64,8 +81,7 @@ public final class Utils extends JavaPlugin {
     @Override
     public void onDisable() {
         System.out.println("nbank plugin disabled");
-
-
+        Database.disconnect();
     }
 
 }

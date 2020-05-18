@@ -1,8 +1,11 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="nbank-utils:jar">
-    <output-path>$USER_HOME$/Documents/privat/mc server/plugins</output-path>
+    <output-path>$USER_HOME$/Desktop/plugins</output-path>
     <root id="archive" name="nbank-utils.jar">
       <element id="module-output" name="nbank-utils" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/mongodb/mongodb-driver-sync/4.0.1/mongodb-driver-sync-4.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/mongodb/bson/4.0.1/bson-4.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/mongodb/mongodb-driver-core/4.0.1/mongodb-driver-core-4.0.1.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
