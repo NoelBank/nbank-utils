@@ -20,10 +20,6 @@ commands:
     description: fly
     aliases: [f]
     usage: /fly
-  backpack:
-    description: opens backpack
-    aliases: [bp]
-    usage: /backpack
   nick:
     description: set nickname
     usage: /nick
@@ -34,6 +30,3 @@ commands:
     description: sets max health
     aliases: [hl]
     usage: /heal
-  position:
-    description: sets and gets position
-    usage: /position

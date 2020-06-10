@@ -62,11 +62,9 @@ public final class Utils extends JavaPlugin {
         getCommand("gamemode").setExecutor(new GamemodeCommand());
         getCommand("clearchat").setExecutor(new ClearChat());
         getCommand("fly").setExecutor(new Fly());
-        getCommand("backpack").setExecutor(new BackPack());
         getCommand("nick").setExecutor(new Nick());
         getCommand("realname").setExecutor(new RealName());
         getCommand("heal").setExecutor(new Heal());
-        getCommand("position").setExecutor(new Position());
 
         /**
          * open database connection

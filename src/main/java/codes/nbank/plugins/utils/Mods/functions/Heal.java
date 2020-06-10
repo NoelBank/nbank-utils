@@ -29,7 +29,7 @@ public class Heal implements CommandExecutor {
             Player player = ((Player) sender).getPlayer();
 
             if (args.length == 0) {
-                sender.sendMessage(healthPrefix + "Du hast dich §egeheilt§7 beendet");
+                sender.sendMessage(healthPrefix + "Du hast dich §egeheilt§7");
                 player.setHealth(20);
                 player.setFoodLevel(20);
 
